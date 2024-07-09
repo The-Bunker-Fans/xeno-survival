@@ -39,10 +39,12 @@ public abstract class SharedActionsSystem : EntitySystem
         SubscribeLocalEvent<InstantActionComponent, MapInitEvent>(OnActionMapInit);
         SubscribeLocalEvent<EntityTargetActionComponent, MapInitEvent>(OnActionMapInit);
         SubscribeLocalEvent<WorldTargetActionComponent, MapInitEvent>(OnActionMapInit);
+        SubscribeLocalEvent<EntityWorldTargetActionComponent, MapInitEvent>(OnActionMapInit);
 
         SubscribeLocalEvent<InstantActionComponent, ComponentShutdown>(OnActionShutdown);
         SubscribeLocalEvent<EntityTargetActionComponent, ComponentShutdown>(OnActionShutdown);
         SubscribeLocalEvent<WorldTargetActionComponent, ComponentShutdown>(OnActionShutdown);
+        SubscribeLocalEvent<EntityWorldTargetActionComponent, ComponentShutdown>(OnActionShutdown);
 
         SubscribeLocalEvent<ActionsComponent, DidEquipEvent>(OnDidEquip);
         SubscribeLocalEvent<ActionsComponent, DidEquipHandEvent>(OnHandEquipped);
@@ -57,10 +59,12 @@ public abstract class SharedActionsSystem : EntitySystem
         SubscribeLocalEvent<InstantActionComponent, ComponentGetState>(OnInstantGetState);
         SubscribeLocalEvent<EntityTargetActionComponent, ComponentGetState>(OnEntityTargetGetState);
         SubscribeLocalEvent<WorldTargetActionComponent, ComponentGetState>(OnWorldTargetGetState);
+        SubscribeLocalEvent<EntityWorldTargetActionComponent, ComponentGetState>(OnEntityWorldTargetGetState);
 
         SubscribeLocalEvent<InstantActionComponent, GetActionDataEvent>(OnGetActionData);
         SubscribeLocalEvent<EntityTargetActionComponent, GetActionDataEvent>(OnGetActionData);
         SubscribeLocalEvent<WorldTargetActionComponent, GetActionDataEvent>(OnGetActionData);
+        SubscribeLocalEvent<EntityWorldTargetActionComponent, GetActionDataEvent>(OnGetActionData);
 
         SubscribeAllEvent<RequestPerformActionEvent>(OnActionRequest);
     }
@@ -101,6 +105,11 @@ public abstract class SharedActionsSystem : EntitySystem
     private void OnWorldTargetGetState(EntityUid uid, WorldTargetActionComponent component, ref ComponentGetState args)
     {
         args.State = new WorldTargetActionComponentState(component, EntityManager);
+    }
+
+    private void OnEntityWorldTargetGetState(EntityUid uid, EntityWorldTargetActionComponent component, ref ComponentGetState args)
+    {
+        args.State = new EntityWorldTargetActionComponentState(component, EntityManager);
     }
 
     private void OnGetActionData<T>(EntityUid uid, T component, ref GetActionDataEvent args) where T : BaseActionComponent
@@ -443,6 +452,35 @@ public abstract class SharedActionsSystem : EntitySystem
                 }
 
                 break;
+            case EntityWorldTargetActionComponent entityWorldAction:
+            {
+
+                var actionEntity = GetEntity(ev.EntityTarget);
+                var actionCoords = GetCoordinates(ev.EntityCoordinatesTarget);
+
+                var entWorldAction = new Entity<EntityWorldTargetActionComponent>(actionEnt, entityWorldAction);
+
+                if (!ValidateEntityWorldTarget(user, actionEntity, actionCoords, entWorldAction))
+                    return;
+
+                _adminLogger.Add(LogType.Action,
+                    $"{ToPrettyString(user):user} is performing the {name:action} action (provided by {ToPrettyString(action.Container ?? user):provider}) targeted at {ToPrettyString(actionEntity):target} {actionCoords:target}.");
+
+                if (entityWorldAction.Event != null)
+                {
+                    entityWorldAction.Event.Entity = actionEntity;
+                    entityWorldAction.Event.Coords = actionCoords;
+                    Dirty(actionEnt, entityWorldAction);
+                    performEvent = entityWorldAction.Event;
+                }
+
+                break;
+                Log.Error(
+                    $"Attempted to perform an entity-world-targeted action without target coordinates! Action: {name}");
+                Log.Error(
+                    $"Attempted to perform an entity-world-targeted action without a target entity! Action: {name}");
+                return;
+            }
             case InstantActionComponent instantAction:
                 if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, null))
                     return;
@@ -538,6 +576,90 @@ public abstract class SharedActionsSystem : EntitySystem
 
         return _interactionSystem.InRangeUnobstructed(user, coords, range: action.Range);
     }
+
+    public bool ValidateEntityWorldTarget(EntityUid user,
+        EntityUid? entity,
+        EntityCoordinates? coords,
+        Entity<EntityWorldTargetActionComponent> action)
+    {
+        var entityValidated = ValidateEntityWorldTargetBaseEntity(user, entity, action);
+        var worldValidated = ValidateEntityWorldTargetBaseWorld(user, coords, action);
+
+        if (!entityValidated && !worldValidated)
+            return false;
+
+        var ev = new ValidateActionEntityWorldTargetEvent(user,
+            entityValidated ? entity : null,
+            worldValidated ? coords : null);
+        RaiseLocalEvent(action, ref ev);
+        return !ev.Cancelled;
+    }
+
+
+    private bool ValidateEntityWorldTargetBaseEntity(EntityUid user,
+        EntityUid? targetEntity,
+        EntityWorldTargetActionComponent action)
+    {
+        if (targetEntity is not { } target || !target.IsValid() || Deleted(target))
+            return false;
+
+        if (_whitelistSystem.IsWhitelistFail(action.Whitelist, target))
+            return false;
+
+        if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, target))
+            return false;
+
+        if (user == target)
+            return action.CanTargetSelf;
+
+        if (!action.CheckCanAccess)
+        {
+            // even if we don't check for obstructions, we may still need to check the range.
+            var xform = Transform(user);
+            var targetXform = Transform(target);
+
+            if (xform.MapID != targetXform.MapID)
+                return false;
+
+            if (action.Range <= 0)
+                return true;
+
+            var distance
+                = (_transformSystem.GetWorldPosition(xform) - _transformSystem.GetWorldPosition(targetXform))
+                .Length();
+            return distance <= action.Range;
+        }
+
+        return _interactionSystem.InRangeAndAccessible(user, target, range: action.Range);
+    }
+
+    private bool ValidateEntityWorldTargetBaseWorld(EntityUid user,
+        EntityCoordinates? entityCoordinates,
+        EntityWorldTargetActionComponent action)
+    {
+        if (entityCoordinates is not { } coords)
+            return false;
+
+        if (action.CheckCanInteract && !_actionBlockerSystem.CanInteract(user, null))
+            return false;
+
+        if (!action.CheckCanAccess)
+        {
+            // even if we don't check for obstructions, we may still need to check the range.
+            var xform = Transform(user);
+
+            if (xform.MapID != _transformSystem.GetMapId(coords))
+                return false;
+
+            if (action.Range <= 0)
+                return true;
+
+            return _transformSystem.InRange(coords, Transform(user).Coordinates, action.Range);
+        }
+
+        return _interactionSystem.InRangeUnobstructed(user, coords, range: action.Range);
+    }
+
 
     public void PerformAction(EntityUid performer, ActionsComponent? component, EntityUid actionId, BaseActionComponent action, BaseActionEvent? actionEvent, TimeSpan curTime, bool predicted = true)
     {

@@ -27,6 +27,8 @@
     xenoDamage:
       types:
         Slash: 225
+  - type: XenoConstructionUpgrade
+    proto: WallXenoResinThick
 
 - type: entity
   parent: WallXenoResin
@@ -116,6 +118,8 @@
   - type: IconSmooth
     key: walls
     base: membrane
+  - type: XenoConstructionUpgrade
+    proto: WallXenoMembraneThick
 
 - type: entity
   parent: BaseMembraneXeno
