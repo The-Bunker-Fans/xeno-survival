@@ -1,0 +1,35 @@
+- type: entity
+  parent: CMEncryptionKey
+  id: XenoSurvival_EncryptionKeyColony
+  name: colony encryption Key
+  components:
+  - type: EncryptionKey
+    channels:
+    - XenoSurvival_Colony
+    defaultChannel: Colony
+  - type: Sprite
+    state: stripped_key
+
+- type: entity
+  parent: CMEncryptionKey
+  id: XenoSurvival_EncryptionKeyColonySecurity
+  name: colony security encryption Key
+  components:
+  - type: EncryptionKey
+    channels:
+    - XenoSurvival_ColonySecurity
+    defaultChannel: Colony
+  - type: Sprite
+    state: stripped_key
+
+- type: entity
+  parent: CMEncryptionKey
+  id: XenoSurvival_EncryptionKeyColonyCommand
+  name: colony command encryption Key
+  components:
+  - type: EncryptionKey
+    channels:
+    - XenoSurvival_ColonyCommand
+    defaultChannel: Colony
+  - type: Sprite
+    state: stripped_key

@@ -2,6 +2,22 @@
   id: XenoSurvival_Colony
   name: chat-radio-colony
   keycode: "r"
-  frequency: 1381
-  color: "#cf40a6" #todo rmc14
+  frequency: 75
+  color: "#cf40a6"
+  longRange: false
+
+- type: radioChannel
+  id: XenoSurvival_ColonySecurity
+  name: chat-radio-colonysecurity
+  keycode: "s"
+  frequency: 76
+  color: "#be324f"
+  longRange: false
+
+- type: radioChannel
+  id: XenoSurvival_ColonyCommand
+  name: chat-radio-colonycommand
+  keycode: "c"
+  frequency: 77
+  color: "#5b96d4"
   longRange: false
