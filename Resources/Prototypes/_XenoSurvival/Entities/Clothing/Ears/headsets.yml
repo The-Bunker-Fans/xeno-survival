@@ -9,7 +9,7 @@
 
 - type: entity
   parent: RMCHeadsetShip
-  id: CMHeadsetMPO
+  id: XenoSurvival_HeadsetColonySecurity
   name: colony security radio headset
   description: This is used by the colony's elite security force.
   components:
@@ -23,7 +23,7 @@
 
 - type: entity
   parent: RMCHeadsetShip
-  id: RMCHeadsetMarineCommand
+  id: XenoSurvival_HeadsetColonyCommand
   name: colony command radio headset
   description: Used by the command staff of the colony.
   components:
