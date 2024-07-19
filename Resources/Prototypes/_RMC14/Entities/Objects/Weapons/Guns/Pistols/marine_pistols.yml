@@ -284,3 +284,51 @@
         whitelist:
           tags:
           - RMCMagazinePistolSU6
+
+- type: entity
+  parent: CMWeaponPistolBase
+  id: RCMWeaponPistolDeagle
+  name: Desert Eagle
+  description: A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. This one is engraved, 'Peace through superior firepower.'
+  components:
+  - type: Gun
+    fireRate: 1.50
+    soundGunshot:
+      path: /Audio/_RMC14/Weapons/Guns/Gunshots/gun_de50.ogg
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Pistols/deagle.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Weapons/Guns/Pistols/deagle.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_mk80_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_mk80_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - RMCMagazinePistol50
+  - type: AttachableHolder
+    slots:
+      rmc-aslot-barrel:
+        whitelist:
+          tags:
+          - RMCAttachmentBarrelCharger
+          - RMCAttachmentExtendedBarrel
+          - RMCAttachmentRecoilCompensator
+      rmc-aslot-rail:
+        whitelist:
+          tags:
+          - RMCAttachmentRailFlashlight
+          - RMCAttachmentS5RedDotSight
+          - RMCAttachmentS6ReflexSight
+      rmc-aslot-underbarrel:
+        whitelist:
+          tags:
+          - RMCAttachmentLaserSight
+  - type: AttachableHolderVisuals
+    offsets:
+      rmc-aslot-barrel: 0.71, 0.095
+      rmc-aslot-rail: -0.065, 0.125
+      rmc-aslot-underbarrel: 0.312, -0.25
