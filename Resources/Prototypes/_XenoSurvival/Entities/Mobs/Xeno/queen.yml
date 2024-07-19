@@ -1,6 +1,7 @@
 ﻿- type: entity
   parent: CMXenoQueen
   id: XS_XenoQueen
+  suffix: Xeno Survival
   components:
   - type: MobThresholds
     thresholds:

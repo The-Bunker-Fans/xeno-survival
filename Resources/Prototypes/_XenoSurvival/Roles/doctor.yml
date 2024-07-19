@@ -1,0 +1,43 @@
+﻿- type: job
+  parent: XenoSurvival_JobBase
+  id: XenoSurvival_Doctor
+  name: cm-job-name-doctor
+  description: cm-job-description-doctor
+  playTimeTracker: CMJobDoctor
+  requirements:
+  - !type:TotalJobsTimeRequirement
+    group: CMJobsMedical
+    time: 3600 # 1 hour
+  startingGear: XenoSurvival_GearDoctor
+  icon: "CMJobIconDoctor"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-cmo
+  accessGroups:
+  - CMMedbay
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Skills
+      firearms: 0
+      medical: 3
+      surgery: 2
+    - type: RMCUserBulkyArmorIncapable
+
+- type: startingGear
+  id: XenoSurvival_GearDoctor
+  equipment:
+    jumpsuit: CMScrubsBlue
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: XenoSurvival_SpawnPointDoctor
+  name: doctor spawn point
+  suffix: Xeno Survival
+  components:
+  - type: SpawnPoint
+    job_id: XenoSurvival_Doctor
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - state: doctor
