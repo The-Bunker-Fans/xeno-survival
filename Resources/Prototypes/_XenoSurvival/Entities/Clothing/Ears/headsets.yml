@@ -1,0 +1,37 @@
+- type: entity
+  parent: CMHeadsetColony
+  id: XenoSurvival_HeadsetColony
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - XenoSurvival_EncryptionKeyColony
+
+- type: entity
+  parent: RMCHeadsetShip
+  id: CMHeadsetMPO
+  name: colony security radio headset
+  description: This is used by the colony's elite security force.
+  components:
+  - type: Sprite
+    state: sec_headset
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - XenoSurvival_EncryptionKeyColony
+      - XenoSurvival_EncryptionKeyColonySecurity
+
+- type: entity
+  parent: RMCHeadsetShip
+  id: RMCHeadsetMarineCommand
+  name: colony command radio headset
+  description: Used by the command staff of the colony.
+  components:
+  - type: Sprite
+    state: mcom_headset
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - XenoSurvival_EncryptionKeyColony
+      - XenoSurvival_EncryptionKeyColonySecurity
+      - XenoSurvival_EncryptionKeyColonyCommand
