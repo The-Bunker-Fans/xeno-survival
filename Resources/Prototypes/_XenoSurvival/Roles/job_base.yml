@@ -3,3 +3,8 @@
   id: XenoSurvival_JobBase
   isCM: true
   canBeAntag: false
+
+- type: department
+  abstract: true
+  id: XenoSurvival_DepartmentBase
+  isCM: true
