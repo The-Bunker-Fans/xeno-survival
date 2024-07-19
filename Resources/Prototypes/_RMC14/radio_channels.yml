@@ -125,7 +125,7 @@
 # Non Marine
 - type: radioChannel
   id: Colony
-  name: 
+  name: chat-radio-colony
   keycode: "ц" #o in cm13
   frequency: 1381
   color: "#cf40a6" #todo rmc14
