@@ -1,2 +1,2 @@
-﻿department-XenoSurvival_Colony = Colonists
+﻿department-XenoSurvival_Colony = Colonist
 cm-department-colonist-description = Colonists
