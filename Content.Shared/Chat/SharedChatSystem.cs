@@ -27,7 +27,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char DefaultChannelKey = 'h';
 
     [ValidatePrototypeId<RadioChannelPrototype>]
-    public const string CommonChannel = "MarineCommon";
+    public const string CommonChannel = "XenoSurvival_Colony";
 
     [ValidatePrototypeId<RadioChannelPrototype>]
     public const string HivemindChannel = "Hivemind";
