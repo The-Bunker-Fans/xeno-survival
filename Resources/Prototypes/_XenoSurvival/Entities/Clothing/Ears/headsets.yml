@@ -1,6 +1,8 @@
 - type: entity
   parent: CMHeadsetColony
   id: XenoSurvival_HeadsetColony
+  name: colony headset
+  description: A standard headset used by colonists.
   components:
   - type: ContainerFill
     containers:
