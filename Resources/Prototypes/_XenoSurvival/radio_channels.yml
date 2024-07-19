@@ -4,4 +4,4 @@
   keycode: "r"
   frequency: 1381
   color: "#cf40a6" #todo rmc14
-  longRange: true
+  longRange: false
