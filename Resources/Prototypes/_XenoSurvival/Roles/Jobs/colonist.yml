@@ -1,0 +1,41 @@
+- type: job
+  parent: CMJobSquadBase
+  id: XenoSurvival_Colonist
+  name: cm-job-name-colonist
+  description: cm-job-description-colonist
+  playTimeTracker: XenoSurvival_JobColonist
+  startingGear: XenoSurvival_GearColonist
+  icon: "CMJobIconEmpty"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-sl
+  accessGroups:
+  - Colonist
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Skills
+      firearms: 0
+    - type: RMCUserBulkyArmorIncapable
+  hasIcon: false
+
+- type: startingGear
+  id: XenoSurvival_GearColonist
+  equipment:
+    jumpsuit: CMJumpsuitColonist
+    id: XenoSurvival_IDColonist
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: Xeno_SurvivalSpawnPointRifleman
+  name: colonist spawn point
+  components:
+  - type: SpawnPoint
+    job_id: XenoSurvival_Colonist
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - state: rifleman
+
+- type: playTimeTracker
+  id: XenoSurvival_JobColonist

@@ -27,6 +27,7 @@
   id: XenoSurvival_GearDoctor
   equipment:
     jumpsuit: CMScrubsBlue
+    id: XenoSurvival_IDDoctor
 
 - type: entity
   parent: CMSpawnPointJobBase

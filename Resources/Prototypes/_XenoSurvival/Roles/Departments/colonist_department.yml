@@ -4,4 +4,5 @@
   description: cm-department-colonist-description
   color: "#008160"
   roles:
+  - XenoSurvival_Colonist
   - XenoSurvival_Doctor

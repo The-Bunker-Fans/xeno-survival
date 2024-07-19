@@ -36,7 +36,7 @@ public sealed partial class VictimInfectedComponent : Component
     public Enum InfectedLayer = VictimInfectedLayer.Infected;
 
     [DataField, AutoNetworkedField]
-    public TimeSpan FallOffDelay = TimeSpan.FromSeconds(10);
+    public TimeSpan FallOffDelay = TimeSpan.FromSeconds(90);
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan FallOffAt;
@@ -63,7 +63,7 @@ public sealed partial class VictimInfectedComponent : Component
     public float IncubationMultiplier = 1;
 
     [DataField, AutoNetworkedField]
-    public EntProtoId BurstSpawn = "CMXenoLarva";
+    public EntProtoId BurstSpawn = "XS_XenoLarva";
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier BurstSound = new SoundCollectionSpecifier("XenoChestBurst");
@@ -75,7 +75,7 @@ public sealed partial class VictimInfectedComponent : Component
     public EntityUid? Hive;
 
     [DataField]
-    public int FinalStage = 5;
+    public int FinalStage = 6;
 
     [DataField, AutoNetworkedField]
     public int CurrentStage = 0;
@@ -84,13 +84,13 @@ public sealed partial class VictimInfectedComponent : Component
     public int InitialSymptomsStart = 2;
 
     [DataField]
-    public int MiddlingSymptomsStart = 3;
+    public int MiddlingSymptomsStart = 4;
 
     [DataField]
-    public int FinalSymptomsStart = 4;
+    public int FinalSymptomsStart = 5;
 
     [DataField]
-    public float ShakesChance = 0.08f;
+    public float ShakesChance = 0.05f;
 
     [DataField]
     public float MinorPainChance = 0.03f;
@@ -111,7 +111,7 @@ public sealed partial class VictimInfectedComponent : Component
     public bool DidBurstWarning = false;
 
     [DataField]
-    public TimeSpan BaseKnockdownTime = TimeSpan.FromSeconds(1);
+    public TimeSpan BaseKnockdownTime = TimeSpan.FromSeconds(5);
 
     [DataField]
     public TimeSpan JitterTime = TimeSpan.FromSeconds(5);
