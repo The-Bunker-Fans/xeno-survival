@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._RMC14.Xenonids.Parasite;
 using Content.Shared._RMC14.Xenonids.Weeds;
@@ -55,7 +55,9 @@ public sealed class XenoNestSystem : EntitySystem
         SubscribeLocalEvent<XenoComponent, GetUsedEntityEvent>(OnXenoGetUsedEntity);
 
         SubscribeLocalEvent<XenoNestSurfaceComponent, InteractHandEvent>(OnSurfaceInteractHand);
+        SubscribeLocalEvent<XenoNestableComponent, ActivateInWorldEvent>(OnNestedActivateInWorld);
         SubscribeLocalEvent<XenoNestSurfaceComponent, DoAfterAttemptEvent<XenoNestDoAfterEvent>>(OnSurfaceDoAfterAttempt);
+        SubscribeLocalEvent<XenoNestedComponent, XenoUnNestDoAfterEvent>(OnUnNestNestableDoAfter);
         SubscribeLocalEvent<XenoNestSurfaceComponent, XenoNestDoAfterEvent>(OnNestSurfaceDoAfter);
         SubscribeLocalEvent<XenoNestSurfaceComponent, CanDropTargetEvent>(OnSurfaceCanDropTarget);
         SubscribeLocalEvent<XenoNestSurfaceComponent, DragDropTargetEvent>(OnSurfaceDragDropTarget);
@@ -103,6 +105,11 @@ public sealed class XenoNestSystem : EntitySystem
 
         args.Handled = true;
         TryStartNesting(args.User, ent, pulling);
+    }
+
+    private void OnNestedActivateInWorld(Entity<XenoNestableComponent> target, ref ActivateInWorldEvent args)
+    {
+        TryStartUnNesting(args.User, target.Owner);
     }
 
     private void OnNestRemove(Entity<XenoNestComponent> ent, ref ComponentRemove args)
@@ -219,6 +226,17 @@ public sealed class XenoNestSystem : EntitySystem
         }
     }
 
+    private void OnUnNestNestableDoAfter(Entity<XenoNestedComponent> ent, ref XenoUnNestDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Handled)
+            return;
+        args.Handled = true;
+        var target = ent.Owner;
+        if (_net.IsClient)
+            return;
+        DetachNested(null, target);
+    }
+
     #region DragDrop
 
     private void OnSurfaceCanDropTarget(Entity<XenoNestSurfaceComponent> ent, ref CanDropTargetEvent args)
@@ -269,13 +287,13 @@ public sealed class XenoNestSystem : EntitySystem
         args.Cancel();
     }
 
-	private void OnInNestGetInfectedIncubationMultiplier(Entity<XenoNestedComponent> ent, ref GetInfectedIncubationMultiplierEvent args)
+    private void OnInNestGetInfectedIncubationMultiplier(Entity<XenoNestedComponent> ent, ref GetInfectedIncubationMultiplierEvent args)
     {
         if (ent.Comp.Running)
             args.Multiply(ent.Comp.IncubationMultiplier);
 	}
 
-	private void TryStartNesting(EntityUid user, Entity<XenoNestSurfaceComponent> surface, EntityUid victim)
+    private void TryStartNesting(EntityUid user, Entity<XenoNestSurfaceComponent> surface, EntityUid victim)
     {
         if (!HasComp<XenoComponent>(user) ||
             !CanNestPopup(user, victim, surface, out _))
@@ -311,6 +329,43 @@ public sealed class XenoNestSystem : EntitySystem
         }
     }
 
+    private void TryStartUnNesting(EntityUid user, EntityUid target)
+    {
+        if (!CanBeUnNested(user, target))
+            return;
+
+        foreach (var session in Filter.PvsExcept(user).Recipients)
+        {
+            if (session.AttachedEntity is not { } recipient)
+                continue;
+            if (recipient == target)
+            {
+                _popup.PopupEntity(Loc.GetString("cm-xeno-nest-unsecuring-target", ("user", user)), user, recipient, PopupType.MediumCaution);
+            }
+            else
+            {
+                _popup.PopupEntity(Loc.GetString("cm-xeno-nest-unsecuring-observer", ("user", user), ("target", target)), user, recipient);
+            }
+        }
+
+        if (_mobState.IsDead(target) || _mobState.IsCritical(target))
+        {
+            _popup.PopupClient(Loc.GetString("cm-xeno-nest-unsecuring-inactive-self", ("target", target)), user, user);
+        }
+        else
+        {
+            _popup.PopupClient(Loc.GetString("cm-xeno-nest-unsecuring-active-self", ("target", target)), user, user);
+        }
+        var ev = new XenoUnNestDoAfterEvent();
+        var doafterTime = TimeSpan.FromSeconds(8);
+        var doAfter = new DoAfterArgs(EntityManager, user, doafterTime, ev, target)
+        {
+            BreakOnMove = true,
+            AttemptFrequency = AttemptFrequency.EveryTick
+        };
+        _doAfter.TryStartDoAfter(doAfter);
+    }
+
     private bool CanBeNested(EntityUid user,
         EntityUid victim,
         Entity<XenoNestSurfaceComponent?> surface,
@@ -333,6 +388,13 @@ public sealed class XenoNestSystem : EntitySystem
         }
 
         return true;
+    }
+
+    private bool CanBeUnNested(EntityUid user, EntityUid target) // potentially add surface to allow targeting surface for action , Entity<XenoNestSurfaceComponent?> surface
+    {
+        if (HasComp<XenoNestedComponent>(target) && HasComp<XenoComponent>(user))
+            return true;
+        return false;
     }
 
     private bool CanNestPopup(EntityUid user,
