@@ -1,0 +1,22 @@
+﻿- type: entity
+  parent: CMXenoLurker
+  id: XS_XenoLurker
+  name: Lurker
+  description: A beefy, fast alien with sharp claws.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      400: Critical
+      500: Dead
+  - type: Tackle
+    threshold: 5
+    stun: 3
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 6
+  - type: MeleeWeapon
+    attackRate: 3.75
+    damage:
+      groups:
+        Brute: 12

@@ -1,0 +1,19 @@
+﻿- type: entity
+  parent: CMXenoQueen
+  id: XS_XenoQueen
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Critical
+      1000: Dead
+  - type: CMArmor
+    armor: 20
+    explosionArmor: 100
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 45
+  - type: Tackle
+    threshold: 3
+    stun: 6

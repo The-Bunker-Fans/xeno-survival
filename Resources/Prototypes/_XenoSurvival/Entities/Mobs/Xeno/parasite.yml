@@ -1,0 +1,22 @@
+﻿- type: entity
+  parent: CMXenoParasite
+  id: XS_XenoParasite
+  name: Parasite
+  components:
+  - type: GhostRole
+    name: cm-job-name-xeno-parasite
+    prob: 1.0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead # TODO RMC14 gib on death
+  - type: XenoLeap
+    knockdownTime: 2
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 6
+  - type: DamageOffWeeds
+    every: 15
+    damage:
+      types:
+        Blunt: 0.1

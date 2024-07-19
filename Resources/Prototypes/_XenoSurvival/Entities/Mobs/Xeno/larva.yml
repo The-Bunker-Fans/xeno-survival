@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: CMXenoLarva
+  id: XS_XenoLarva
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Critical
+      100: Dead
+  - type: XenoEvolution
+    evolvesTo:
+    - XS_XenoDrone
+    - XS_XenoRunner
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.7
+    baseSprintSpeed: 8.5
+  - type: DamageOffWeeds
+    every: 30
+    damage:
+      types:
+        Blunt: 0.5

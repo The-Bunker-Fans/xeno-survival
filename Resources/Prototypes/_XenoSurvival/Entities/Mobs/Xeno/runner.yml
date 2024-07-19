@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: CMXenoRunner
+  id: XS_XenoRunner
+  name: Runner
+  description: A small red alien that looks like it could run fairly quickly...
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      175: Critical
+      300: Dead
+  - type: XenoEvolution
+    max: 700
+    evolveWithoutOvipositorFor: 10
+    evolvesTo:
+    - XS_XenoLurker
+  - type: MeleeWeapon
+    attackRate: 1.3
+    damage:
+      groups:
+        Brute: 18
