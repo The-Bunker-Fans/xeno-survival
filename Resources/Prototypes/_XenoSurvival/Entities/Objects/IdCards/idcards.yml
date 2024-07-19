@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: CMIDCardBase
+  id: XenoSurvival_IDDoctor
+  name: doctor's ID card
+  components:
+  - type: PresetIdCard
+    job: XenoSurvival_Doctor
+
+- type: entity
+  parent: CMIDCardLanyard
+  id: XenoSurvival_IDColonist
+  name: colonist's ID card
+  components:
+  - type: PresetIdCard
+    job: XenoSurvival_Colonist
