@@ -3,7 +3,7 @@
   id: XenoSurvival_Doctor
   name: cm-job-name-doctor
   description: cm-job-description-doctor
-  playTimeTracker: CMJobDoctor
+  playTimeTracker: XenoSurvival_JobDoctor
   requirements:
   - !type:TotalJobsTimeRequirement
     group: CMJobsMedical
@@ -41,3 +41,6 @@
     - sprite: Markers/jobs.rsi
       state: green
     - state: doctor
+
+- type: playTimeTracker
+  id: XenoSurvival_JobDoctor
