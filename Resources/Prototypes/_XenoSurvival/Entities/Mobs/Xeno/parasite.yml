@@ -2,6 +2,7 @@
   parent: CMXenoParasite
   id: XS_XenoParasite
   name: Parasite
+  suffix: Xeno Survival
   components:
   - type: GhostRole
     name: cm-job-name-xeno-parasite

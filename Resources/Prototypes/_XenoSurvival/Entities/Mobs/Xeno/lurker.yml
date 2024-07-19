@@ -3,6 +3,7 @@
   id: XS_XenoLurker
   name: Lurker
   description: A beefy, fast alien with sharp claws.
+  suffix: Xeno Survival
   components:
   - type: MobThresholds
     thresholds:

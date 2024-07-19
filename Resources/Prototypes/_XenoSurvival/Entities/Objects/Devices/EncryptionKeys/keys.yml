@@ -2,6 +2,7 @@
   parent: CMEncryptionKey
   id: XenoSurvival_EncryptionKeyColony
   name: colony encryption Key
+  suffix: Xeno Survival
   components:
   - type: EncryptionKey
     channels:
@@ -14,6 +15,7 @@
   parent: CMEncryptionKey
   id: XenoSurvival_EncryptionKeyColonySecurity
   name: colony security encryption Key
+  suffix: Xeno Survival
   components:
   - type: EncryptionKey
     channels:
@@ -26,6 +28,7 @@
   parent: CMEncryptionKey
   id: XenoSurvival_EncryptionKeyColonyCommand
   name: colony command encryption Key
+  suffix: Xeno Survival
   components:
   - type: EncryptionKey
     channels:

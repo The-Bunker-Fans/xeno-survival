@@ -3,6 +3,7 @@
   id: XenoSurvival_HeadsetColony
   name: colony headset
   description: A standard headset used by colonists.
+  suffix: Xeno Survival
   components:
   - type: ContainerFill
     containers:
@@ -14,6 +15,7 @@
   id: XenoSurvival_HeadsetColonySecurity
   name: colony security radio headset
   description: This is used by the colony's elite security force.
+  suffix: Xeno Survival
   components:
   - type: Sprite
     state: sec_headset
@@ -28,6 +30,7 @@
   id: XenoSurvival_HeadsetColonyCommand
   name: colony command radio headset
   description: Used by the command staff of the colony.
+  suffix: Xeno Survival
   components:
   - type: Sprite
     state: mcom_headset

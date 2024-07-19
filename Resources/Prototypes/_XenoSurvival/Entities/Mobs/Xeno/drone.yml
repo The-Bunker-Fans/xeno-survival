@@ -6,6 +6,7 @@
   id: XS_XenoDrone
   name: Drone
   description: An alien drone.
+  suffix: Xeno Survival
   components:
   - type: GhostRole
     name: cm-job-name-xeno-drone
