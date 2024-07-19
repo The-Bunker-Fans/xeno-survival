@@ -1,0 +1,7 @@
+﻿- type: department
+  parent: XenoSurvival_DepartmentBase
+  id: XenoSurvival_Colony
+  description: cm-department-colonist-description
+  color: "#008160"
+  roles:
+  - XenoSurvival_Doctor

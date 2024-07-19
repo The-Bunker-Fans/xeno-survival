@@ -1,0 +1,12 @@
+﻿[adminlogs]
+server_name = "xeno_survival"
+
+[game]
+desc = "Fork of RMC14."
+hostname = "[EN][MRP] Xeno Survival [US East]"
+
+[hub]
+tags = "lang:en,region:am_n_e,rp:med"
+
+[loki]
+name = "xeno_survival"
