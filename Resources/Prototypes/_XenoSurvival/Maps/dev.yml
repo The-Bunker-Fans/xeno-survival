@@ -15,3 +15,5 @@
         availableJobs:
           XenoSurvival_Colonist: [ -1, -1 ]
           XenoSurvival_Doctor: [ -1, -1 ]
+          XenoSurvival_SecurityOfficer: [ -1, -1 ]
+          XenoSurvival_Warden: [ -1, -1 ]

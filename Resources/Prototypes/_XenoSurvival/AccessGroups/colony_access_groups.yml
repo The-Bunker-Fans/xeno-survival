@@ -1,0 +1,21 @@
+﻿- type: accessGroup
+  id: ColonistSecurity
+  tags:
+  - CMAccessColonyBrig
+  - CMAccessMedical
+  - CMAccessColonyPublic
+
+- type: accessGroup
+  id: ColonistCommand
+  tags:
+  - CMAccessCommand
+  - CMAccessResearch
+  - CMAccessMedical
+  - CMAccessColonyPublic
+  - CMAccessColonyResearch
+  - CMAccessColonyEngineering
+  - CMAccessColonyLogistics
+  - CMAccessColonyBrig
+  - CMAccessColonyMedbay
+  - CMAccessColonyCommand
+  - CMAccessPress

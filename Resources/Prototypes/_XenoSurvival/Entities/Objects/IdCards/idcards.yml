@@ -15,3 +15,21 @@
   components:
   - type: PresetIdCard
     job: XenoSurvival_Colonist
+
+- type: entity
+  parent: CMIDCardSilver
+  id: XenoSurvival_IDCardWarden
+  name: warden ID card
+  suffix: Xeno Survival
+  components:
+  - type: PresetIdCard
+    job: XenoSurvival_Warden
+
+- type: entity
+  parent: CMIDCardBase
+  id: XenoSurvival_IDCardSecurityOfficer
+  name: security officer ID card
+  suffix: Xeno Survival
+  components:
+  - type: PresetIdCard
+    job: XenoSurvival_SecurityOfficer

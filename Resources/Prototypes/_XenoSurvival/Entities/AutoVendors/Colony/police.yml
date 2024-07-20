@@ -1,0 +1,135 @@
+# SECURITY
+
+- type: entity
+  parent: ColMarTechBase
+  id: XenoSurvival_ColMarTechSecurityEquipment
+  name: ColMarTech Security Equipment Rack
+  description: An automated rack hooked up to a colossal storage of security standard-issue equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "CMAccessColonyBrig" ]
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/VendingMachines/ColMarTech/clothing.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - XenoSurvival_SecurityOfficer
+    sections:
+    - name: Police Set (Mandatory)
+      choices: { CMArmorM2MP: 1 }
+      entries:
+      - id: RMCVendorBundleMilitaryPoliceApparel
+    - name: Standard Equipment
+      takeAll: CMStandard
+      entries:
+      - id: CMHandsBlackMarine
+      - id: XenoSurvival_HeadsetColonySecurity
+      - id: CMBootsBlackFilled
+    - name: Armor
+      takeAll: CMArmor
+      entries:
+      - id: CMArmorM2MP
+      - id: CMHeadBeretRed
+    - name: Handgun Case
+#     choices: { CMGunCase: 1 }
+      entries: []
+#     - id: M77 Gun case
+#     - id: Combat Revolver Gun case
+#     - id: M1984 Gun case
+    - name: Backpack
+      choices: { CMBackpack: 1 }
+      entries:
+      - id: CMSatchelSecurity
+    - name: Pouches
+      choices: { CMPouch: 2 }
+      entries:
+      - id: CMPouchGeneralMedium
+      - id: CMPouchFirstAidInjectors
+        name: first-aid pouch (refillable injectors)
+      - id: CMPouchFirstAidSplintsGauzeOintment
+        name: first-aid pouch (gauze, ointment) # TODO RMC14 add 'splints,'
+      - id: CMPouchFirstAidPills
+        name: first-aid pouch (pills)
+      - id: CMPouchMagazinePistol
+      - id: CMPouchPistol
+    - name: Mask
+      choices: { CMMask: 1 }
+      entries:
+      - id: CMMaskGas
+      - id: CMMaskCoif
+#     - id: Rebreather
+    - name: Accessories
+      choices: { CMAccessories: 1 }
+      entries:
+      - id: CMWebbingBrown
+      - id: CMWebbingBlack
+      #- id: CMShoulderHolster
+      - id: CMWebbing
+
+# WARDEN
+- type: entity
+  parent: ColMarTechBase
+  id: XenoSurvival_ColMarTechWardenEquipment
+  name: ColMarTech Warden Equipment Rack
+  description: An automated rack hooked up to a colossal storage of warden standard-issue equipment.
+  suffix: Xeno Survival
+  components:
+  - type: AccessReader
+    access:
+    - [ "CMAccessColonyBrig" ]
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/VendingMachines/ColMarTech/clothing.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - XenoSurvival_Warden
+    sections:
+    - name: Police Set (Mandatory)
+      choices: { CMArmorM3Warden: 1 }
+      entries:
+      - id: RMCVendorBundleMilitaryPoliceApparel
+    - name: Standard Equipment
+      takeAll: CMStandard
+      entries:
+      - id: CMHandsBlackMarine
+      - id: XenoSurvival_HeadsetColonyCommand
+      - id: CMBootsBlackFilled
+    - name: Armor
+      takeAll: CMArmor
+      entries:
+      - id: CMArmorM3Warden
+      - id: CMHeadCapWarden
+    - name: Handgun Case
+#     choices: { CMGunCase: 1 }
+      entries: []
+#     - id: M77 Gun case
+#     - id: Combat Revolver Gun case
+#     - id: M1984 Gun case
+    - name: Backpack
+      choices: { CMBackpack: 1 }
+      entries:
+      - id: CMSatchelSecurity
+    - name: Pouches
+      choices: { CMPouch: 2 }
+      entries:
+      - id: CMPouchGeneralMedium
+      - id: CMPouchFirstAidInjectors
+        name: first-aid pouch (refillable injectors)
+      - id: CMPouchFirstAidSplintsGauzeOintment
+        name: first-aid pouch (gauze, ointment) # TODO RMC14 add 'splints,'
+      - id: CMPouchFirstAidPills
+        name: first-aid pouch (pills)
+      - id: CMPouchMagazinePistol
+      - id: CMPouchPistol
+    - name: Mask
+      choices: { CMMask: 1 }
+      entries:
+      - id: CMMaskGas
+      - id: CMMaskCoif
+#     - id: Rebreather
+    - name: Accessories
+      choices: { CMAccessories: 1 }
+      entries:
+      - id: CMWebbingBrown
+      - id: CMWebbingBlack
+      #- id: CMShoulderHolster
+      - id: CMWebbing
