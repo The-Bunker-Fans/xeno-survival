@@ -26,17 +26,12 @@
     ears: XenoSurvival_HeadsetColony
 
 - type: entity
-  parent: CMSpawnPointJobBase
-  id: Xeno_SurvivalSpawnPointRifleman
-  name: colonist spawn point
+  parent: CMHyperSleepChamber
+  id: XenoSurvival_HyperSleepChamberColonist
+  suffix: Xeno Survival, Colonist
   components:
   - type: SpawnPoint
     job_id: XenoSurvival_Colonist
-  - type: Sprite
-    layers:
-    - sprite: Markers/jobs.rsi
-      state: green
-    - state: rifleman
 
 - type: playTimeTracker
   id: XenoSurvival_JobColonist
