@@ -38,18 +38,12 @@
     id: XenoSurvival_IDCardWarden
 
 - type: entity
-  parent: CMSpawnPointJobBase
-  id: XenoSurvival_SpawnPointWarden
-  name: warden spawn point
-  suffix: Xeno Survival
+  parent: CMHyperSleepChamber
+  id: XenoSurvival_HyperSleepChamberWarden
+  suffix: Xeno Survival, Warden
   components:
   - type: SpawnPoint
     job_id: XenoSurvival_Warden
-  - type: Sprite
-    layers:
-    - sprite: Markers/jobs.rsi
-      state: green
-    - state: warden
 
 - type: playTimeTracker
   id: XenoSurvival_JobWarden

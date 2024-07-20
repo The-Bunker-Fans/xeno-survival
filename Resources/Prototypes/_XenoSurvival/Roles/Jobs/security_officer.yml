@@ -32,18 +32,12 @@
     id: XenoSurvival_IDCardSecurityOfficer
 
 - type: entity
-  parent: CMSpawnPointJobBase
-  id: XenoSurvival_SpawnPointSecurityOfficer
-  name: security officer spawn point
-  suffix: Xeno Survival
+  parent: CMHyperSleepChamber
+  id: XenoSurvival_HyperSleepChamberSec
+  suffix: Xeno Survival, SecOff
   components:
   - type: SpawnPoint
     job_id: XenoSurvival_SecurityOfficer
-  - type: Sprite
-    layers:
-    - sprite: Markers/jobs.rsi
-      state: green
-    - state: military_police
 
 - type: playTimeTracker
   id: XenoSurvival_JobSecurityOfficer

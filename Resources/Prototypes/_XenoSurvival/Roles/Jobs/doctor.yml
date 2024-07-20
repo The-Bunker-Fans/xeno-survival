@@ -30,18 +30,12 @@
     id: XenoSurvival_IDDoctor
 
 - type: entity
-  parent: CMSpawnPointJobBase
-  id: XenoSurvival_SpawnPointDoctor
-  name: doctor spawn point
-  suffix: Xeno Survival
+  parent: CMHyperSleepChamber
+  id: XenoSurvival_HyperSleepChamberDoctor
+  suffix: Xeno Survival, Doctor
   components:
   - type: SpawnPoint
     job_id: XenoSurvival_Doctor
-  - type: Sprite
-    layers:
-    - sprite: Markers/jobs.rsi
-      state: green
-    - state: doctor
 
 - type: playTimeTracker
   id: XenoSurvival_JobDoctor
