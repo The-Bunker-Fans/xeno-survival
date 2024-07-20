@@ -22,8 +22,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - XenoSurvival_EncryptionKeyColony
       - XenoSurvival_EncryptionKeyColonySecurity
+      - XenoSurvival_EncryptionKeyColony
 
 - type: entity
   parent: RMCHeadsetShip
@@ -37,6 +37,6 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - XenoSurvival_EncryptionKeyColony
-      - XenoSurvival_EncryptionKeyColonySecurity
       - XenoSurvival_EncryptionKeyColonyCommand
+      - XenoSurvival_EncryptionKeyColonySecurity
+      - XenoSurvival_EncryptionKeyColony

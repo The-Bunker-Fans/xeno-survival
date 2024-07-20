@@ -7,7 +7,7 @@
   - type: EncryptionKey
     channels:
     - XenoSurvival_Colony
-    defaultChannel: Colony
+    defaultChannel: XenoSurvival_Colony
   - type: Sprite
     state: stripped_key
 
@@ -20,7 +20,7 @@
   - type: EncryptionKey
     channels:
     - XenoSurvival_ColonySecurity
-    defaultChannel: Colony
+    defaultChannel: XenoSurvival_ColonySecurity
   - type: Sprite
     state: stripped_key
 
@@ -33,6 +33,6 @@
   - type: EncryptionKey
     channels:
     - XenoSurvival_ColonyCommand
-    defaultChannel: Colony
+    defaultChannel: XenoSurvival_ColonyCommand
   - type: Sprite
     state: stripped_key
