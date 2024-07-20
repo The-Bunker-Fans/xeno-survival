@@ -20,8 +20,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      600: Critical
-      700: Dead
+      750: Critical
+      900: Dead
   - type: MeleeWeapon
     damage:
       groups:
@@ -46,7 +46,7 @@
     unlockAt: 60 # 1 minute
   - type: XenoDevolve
     devolvesTo:
-    - CMXenoLarva
+    - XS_XenoLarva
   - type: XenoAcid
   - type: XenoConstruction
     buildDelay: 2
@@ -61,7 +61,7 @@
     canEvolveWithoutGranter: true
     max: 300
     evolvesToWithoutPoints:
-    - CMXenoQueen
+    - XS_XenoQueen
   - type: XenoPheromones
     pheromonesMultiplier: 2
   - type: XenoPlasma
@@ -84,4 +84,6 @@
         - XenoEgg
   - type: RMCXenoDamageVisuals
     prefix: drone
-
+  - type: CMArmor
+    armor: 5
+    explosionArmor: 10
