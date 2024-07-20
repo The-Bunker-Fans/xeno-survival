@@ -2,6 +2,7 @@
   parent: CMIDCardBase
   id: XenoSurvival_IDDoctor
   name: doctor's ID card
+  suffix: Xeno Survival
   components:
   - type: PresetIdCard
     job: XenoSurvival_Doctor
@@ -10,6 +11,7 @@
   parent: CMIDCardLanyard
   id: XenoSurvival_IDColonist
   name: colonist's ID card
+  suffix: Xeno Survival
   components:
   - type: PresetIdCard
     job: XenoSurvival_Colonist

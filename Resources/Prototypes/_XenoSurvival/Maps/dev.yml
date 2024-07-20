@@ -1,0 +1,17 @@
+﻿- type: gameMap
+  id: XenoSurvival_Dev
+  mapName: XenoSurvivalDev
+  mapPath: /Maps/_RMC14/dev_map.yml
+  minPlayers: 0
+  maxRandomOffset: 0
+  randomRotation: false
+  stations:
+    Dev:
+      stationProto: StandardNanotrasenStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "Dev"
+      - type: StationJobs
+        availableJobs:
+          XenoSurvival_Colonist: [ -1, -1 ]
+          XenoSurvival_Doctor: [ -1, -1 ]
