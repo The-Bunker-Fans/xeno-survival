@@ -8,8 +8,8 @@
     sprite: _XenoSurvival/Objects/Weapons/Grenades/m41gas.rsi
   - type: SmokeOnTrigger
     duration: 20
-    spreadAmount: 25
+    spreadAmount: 30
     solution:
       reagents:
       - ReagentId: TearGas
-        Quantity: 40
+        Quantity: 50
