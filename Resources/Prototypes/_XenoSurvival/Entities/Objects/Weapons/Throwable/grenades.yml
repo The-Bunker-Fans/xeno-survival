@@ -1,0 +1,15 @@
+- type: entity
+  parent: CMGrenadeSmoke
+  id: CMGrenadeSmoke
+  name: M41 tear gas grenade
+  description: The M41 HSDP is a modified M40 HSDP, contains tear gas. Wear eye protection while handling.
+  components:
+  - type: Sprite
+    sprite: _XenoSurvival/Objects/Weapons/Grenades/m41gas.rsi
+  - type: SmokeOnTrigger
+    duration: 20
+    spreadAmount: 25
+    solution:
+      reagents:
+      - ReagentId: TearGas
+        Quantity: 40
