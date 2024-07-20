@@ -67,7 +67,8 @@ namespace Content.IntegrationTests.Tests
             "Oasis",
             "CMDev",
             "Savannah",
-            "Almayer"
+            "Almayer",
+            "XenoSurvival_Dev"
         };
 
         /// <summary>
