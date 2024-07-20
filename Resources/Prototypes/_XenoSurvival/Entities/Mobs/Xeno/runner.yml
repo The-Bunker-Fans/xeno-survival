@@ -18,3 +18,6 @@
     damage:
       groups:
         Brute: 18
+  - type: XenoDevolve
+    devolvesTo:
+    - XS_XenoLarva
