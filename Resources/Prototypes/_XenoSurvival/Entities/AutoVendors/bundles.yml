@@ -1,0 +1,15 @@
+﻿- type: entity
+  id: XenoSurvival_VendorBundleDoctorApparel
+  name: standard doctor apparel
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/headsets.rsi
+    state: generic_headset
+  - type: CMVendorBundle
+    bundle:
+    - XenoSurvival_HeadsetColony
+    - CMHandsLatex
+    - ClothingShoesColorWhite
+    - RMCGlassesMedicalHUDGlasses
