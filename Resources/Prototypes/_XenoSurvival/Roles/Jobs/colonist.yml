@@ -26,7 +26,7 @@
     ears: XenoSurvival_HeadsetColony
 
 - type: entity
-  parent: CMHyperSleepChamber
+  parent: XenoSurvival_HyperSleepJobSpawner
   id: XenoSurvival_HyperSleepChamberColonist
   suffix: Xeno Survival, Colonist
   components:

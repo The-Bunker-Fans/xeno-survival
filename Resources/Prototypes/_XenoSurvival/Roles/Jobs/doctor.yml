@@ -30,7 +30,7 @@
     id: XenoSurvival_IDDoctor
 
 - type: entity
-  parent: CMHyperSleepChamber
+  parent: XenoSurvival_HyperSleepJobSpawner
   id: XenoSurvival_HyperSleepChamberDoctor
   suffix: Xeno Survival, Doctor
   components:

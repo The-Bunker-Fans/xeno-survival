@@ -38,7 +38,7 @@
     id: XenoSurvival_IDCardWarden
 
 - type: entity
-  parent: CMHyperSleepChamber
+  parent: XenoSurvival_HyperSleepJobSpawner
   id: XenoSurvival_HyperSleepChamberWarden
   suffix: Xeno Survival, Warden
   components:
