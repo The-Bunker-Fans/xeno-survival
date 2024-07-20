@@ -8,3 +8,12 @@
   abstract: true
   id: XenoSurvival_DepartmentBase
   isCM: true
+
+- type: entity
+  id: XenoSurvival_HyperSleepJobSpawner
+  parent: CMHyperSleepChamber
+  abstract: true
+  suffix: Xeno Survival
+  components:
+  - type: SpawnPoint
+    spawn_type: Job

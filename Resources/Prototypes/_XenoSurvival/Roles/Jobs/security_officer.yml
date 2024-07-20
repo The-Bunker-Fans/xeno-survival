@@ -32,7 +32,7 @@
     id: XenoSurvival_IDCardSecurityOfficer
 
 - type: entity
-  parent: CMHyperSleepChamber
+  parent: XenoSurvival_HyperSleepJobSpawner
   id: XenoSurvival_HyperSleepChamberSec
   suffix: Xeno Survival, SecOff
   components:
