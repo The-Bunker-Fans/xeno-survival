@@ -1,12 +1,10 @@
 <p align="center"> <img alt="Space Station 14" width="400" height="400" src="https://github.com/RMC-14/RMC-14/assets/121047731/84edde1b-1a1f-452e-a9b9-64759a865f64" /></p>
 
-RMC14 is inspired by CM13, Space Station 13, that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox).
+Xeno Survival is a fork of [RMC14](https://github.com/RMC-14/RMC-14) that is survival based.
 
-The design goal of this fork is to attempt to replicate the feel and experience of CM13, while using SS14 as a foundation.
+This is the primary repo for Xeno Survival. To prevent people forking Robust Toolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server.
 
-This is the primary repo for RMC14. To prevent people forking Robust Toolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server.
-
-If you want to host or create content for RMC14, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
+If you want to host or create content for Xeno Survival, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
 
 ## Links
 
@@ -14,7 +12,7 @@ If you want to host or create content for RMC14, this is the repo you need. It c
 
 ## Contributing
 
-We are happy to accept contributions from anybody. Get in Discord if you want to help. We've got a [list of issues](https://github.com/RMC-14/RMC-14/issues) that need to be done and anybody can pick them up. Don't be afraid to ask for help either!
+We are happy to accept contributions from anybody. Get in Discord if you want to help.
 
 We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language consider creating a fork or contributing to a fork.
 
