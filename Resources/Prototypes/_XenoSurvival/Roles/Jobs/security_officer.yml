@@ -1,0 +1,49 @@
+- type: job
+  parent: CMJobBase
+  id: XenoSurvival_SecurityOfficer
+  name: job-name-security
+  description: cm-job-description-securityofficer
+  playTimeTracker: XenoSurvival_JobSecurityOfficer
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: XenoSurvival_Colony
+    time: 18000 # 5 hours
+  weight: 5
+  startingGear: XenoSurvival_GearSecurity
+  icon: "CMJobIconMilitaryPolice"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-cmp
+  accessGroups:
+  - ColonistSecurity
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Skills
+      cqc: 2
+      endurance: 2
+      firearms: 1
+      fireman: 2
+      police: 2
+
+- type: startingGear
+  id: XenoSurvival_GearSecurity
+  equipment:
+    jumpsuit: JumpsuitColonySecurity
+    id: XenoSurvival_IDCardSecurityOfficer
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: XenoSurvival_SpawnPointSecurityOfficer
+  name: security officer spawn point
+  suffix: Xeno Survival
+  components:
+  - type: SpawnPoint
+    job_id: XenoSurvival_SecurityOfficer
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - state: military_police
+
+- type: playTimeTracker
+  id: XenoSurvival_JobSecurityOfficer

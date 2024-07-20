@@ -4,5 +4,15 @@
   description: cm-department-colonist-description
   color: "#008160"
   roles:
-  - XenoSurvival_Colonist
   - XenoSurvival_Doctor
+  - XenoSurvival_Colonist
+
+- type: department
+  parent: XenoSurvival_DepartmentBase
+  id: XenoSurvival_Security
+  description: cm-department-colonist-description
+  color: "#DE3A3A"
+  weight: 20
+  roles:
+  - XenoSurvival_Warden
+  - XenoSurvival_SecurityOfficer

@@ -2,7 +2,7 @@
   parent: XenoSurvival_JobBase
   id: XenoSurvival_Doctor
   name: cm-job-name-doctor
-  description: cm-job-description-doctor
+  description: cm-job-description-doctor_xs
   playTimeTracker: XenoSurvival_JobDoctor
   requirements:
   - !type:TotalJobsTimeRequirement

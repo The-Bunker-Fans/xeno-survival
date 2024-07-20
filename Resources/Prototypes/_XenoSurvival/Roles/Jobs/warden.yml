@@ -1,0 +1,55 @@
+- type: job
+  parent: CMJobBase
+  id: XenoSurvival_Warden
+  name: job-name-warden
+  description: cm-job-description-warden
+  playTimeTracker: XenoSurvival_JobWarden
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: XenoSurvival_Security
+    time: 36000 # 10 hours
+  weight: 10
+  startingGear: XenoSurvival_GearWarden
+  icon: "CMJobIconMilitaryWarden"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-cmp
+  accessGroups:
+  - ColonistCommand
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Skills
+      construction: 2
+      cqc: 2
+      endurance: 2
+      engineer: 2
+      firearms: 2
+      fireman: 1
+      leadership: 2
+      medical: 1
+      overwatch: 1
+      police: 2
+    - type: MarineOrders
+
+- type: startingGear
+  id: XenoSurvival_GearWarden
+  equipment:
+    jumpsuit: CMJumpsuitWardenRed
+    id: XenoSurvival_IDCardWarden
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: XenoSurvival_SpawnPointWarden
+  name: warden spawn point
+  suffix: Xeno Survival
+  components:
+  - type: SpawnPoint
+    job_id: XenoSurvival_Warden
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - state: warden
+
+- type: playTimeTracker
+  id: XenoSurvival_JobWarden
