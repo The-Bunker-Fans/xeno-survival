@@ -23,6 +23,7 @@
   equipment:
     jumpsuit: CMJumpsuitColonist
     id: XenoSurvival_IDColonist
+    ears: XenoSurvival_HeadsetColony
 
 - type: entity
   parent: CMSpawnPointJobBase
